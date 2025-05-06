@@ -12,7 +12,7 @@ const BookPage = () => {
   const [author, setAuthor] = useState('');
   const navigate = useNavigate();
 
-  // Fetch all books from the API
+  // Fetch all books
   const fetchBooks = async () => {
     try {
       const response = await axios.get('http://localhost:5000/books/getAll', {

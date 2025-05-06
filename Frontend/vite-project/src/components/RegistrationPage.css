@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f7fb;
@@ -9,7 +8,6 @@ body {
     margin: 0;
   }
   
-  /* Register Container */
   .register-container {
     background-color: white;
     padding: 40px;
@@ -19,21 +17,18 @@ body {
     max-width: 400px;
     text-align: center;
   }
-  
-  /* Title */
   .register-title {
     font-size: 2rem;
     color: #333;
     margin-bottom: 20px;
   }
   
-  /* Form Styles */
+
   .register-form {
     display: flex;
     flex-direction: column;
   }
   
-  /* Input Styles */
   .input-group {
     margin-bottom: 15px;
     text-align: left;
@@ -58,8 +53,7 @@ body {
   .input-field:focus {
     border-color: #0056b3;
   }
-  
-  /* Button Styles */
+
   .register-button {
     padding: 12px;
     background-color: #28a745;
@@ -75,7 +69,6 @@ body {
     background-color: #218838;
   }
   
-  /* Success & Error Messages */
   .success-message {
     color: green;
     font-size: 1rem;

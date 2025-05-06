@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './components/LoginPage.jsx';
 import Homepage from './components/Homepage.jsx';
 import RegisterPage from './components/RegisterPage.jsx';
-import AddBookPage from './components/AddBookPage.jsx';
-//import BookPage from './components/BookPage';
-//import CreateBookPage from './components/CreateBookPage';
+import AddBookPage from './components/AddBookPage.jsx'
 
 function App() {
   return (

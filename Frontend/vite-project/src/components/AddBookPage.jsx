@@ -31,7 +31,7 @@ const AddBookPage = () => {
         }
       );
       console.log('Book created successfully:', response.data);
-      navigate('/'); // Navigate back to the books page after creation
+      navigate('/'); 
     } catch (error) {
       console.error('Error creating book:', error.response ? error.response.data : error.message);
       setError(error.response ? error.response.data : 'An error occurred');

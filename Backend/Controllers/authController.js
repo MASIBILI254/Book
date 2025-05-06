@@ -23,14 +23,14 @@ exports.login = (req, res) => {
       return res.status(401).send('Invalid password');
     }
 
-    // Generate the token with user id and an expiration time
+   
     console.log("User object:", result[0]);
 
     const token = jwt.sign(
 
-      { id: result[0].user_id }, // Payload: include user ID
-      process.env.JWT_SECRET, // Secret for signing the token
-      { expiresIn: '1h' }    // Expiry time (1 hour)
+      { id: result[0].user_id },
+      process.env.JWT_SECRET, 
+      { expiresIn: '1h' }    
     );
 
     res.send({

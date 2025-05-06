@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './RegistrationPage.css'; // Importing the CSS file
+import './RegistrationPage.css'; 
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -17,33 +17,30 @@ const RegisterPage = () => {
     setError('');
     setSuccess('');
 
-    // Validate password confirmation
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
     }
 
     try {
-      // Send registration request to backend
+  
       const response = await axios.post('http://localhost:5000/auth/register', {
         username,
         email,
         password,
       });
 
-      // On successful registration
       setSuccess('Registration successful! Please log in.');
       setUsername('');
       setEmail('');
       setPassword('');
       setConfirmPassword('');
 
-      // Redirect to login page after successful registration
       setTimeout(() => {
         navigate('/login');
       }, 2000);
     } catch (err) {
-      // Handle errors
+    
       if (err.response && err.response.data) {
         setError(err.response.data.message || 'An error occurred during registration');
       } else {

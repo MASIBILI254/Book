@@ -5,7 +5,6 @@ function verifyToken(req, res, next) {
   const token = req.headers['authorization'];
   if (!token) return res.status(403).send('Token required');
   
-  // Remove 'Bearer ' prefix if present
   const tokenStr = token.split(' ')[1];
 
   if (!tokenStr) return res.status(403).send('Invalid token');
@@ -24,7 +23,7 @@ function verifyToken(req, res, next) {
 exports.verifyToken = verifyToken;
 
 exports.getBooks = (req, res) => {
-  // Check if userId exists on the request object
+  // Check if userId exists 
   const userId = req.userId;
   if (!userId) {
     return res.status(400).send({ message: "User ID is required." });
@@ -33,17 +32,17 @@ exports.getBooks = (req, res) => {
   // Query database for books with the given user_id
   db.query('SELECT * FROM books WHERE user_id = ?', [userId], (err, results) => {
     if (err) {
-      console.error("Database error: ", err); // Log the actual error
+      console.error("Database error: ", err);
       return res.status(500).send({ message: "Error fetching books", error: err.message });
     }
 
-    // If no books are found, inform the user
+    // If no books are found
     if (results.length === 0) {
       return res.status(200).send({ message: "No books found for this user." });
     }
 
-    console.log("Books found: ", results); // Log the results for debugging
-    res.status(200).json(results); // Send results as JSON
+    console.log("Books found: ", results); 
+    res.status(200).json(results); 
   });
 };
 
@@ -58,7 +57,7 @@ exports.createBook = (req, res) => {
     return res.status(400).send('User not found');
   }
 
-  // Insert the book with the user's ID
+  
   db.query(
     'INSERT INTO books (title, author, user_id) VALUES (?, ?, ?)',
     [title, author, userId],
@@ -67,7 +66,7 @@ exports.createBook = (req, res) => {
 
       const insertedId = result.insertId;
 
-      // Fetch the newly created book info
+   
       db.query(
         'SELECT id, title, author, user_id FROM books WHERE id = ?',
         [insertedId],
@@ -98,7 +97,7 @@ exports.deleteBook = (req, res) => {
     if (err) return res.status(500).send({ error: 'Database error', details: err });
 
     if (result.affectedRows === 0) {
-      // Nothing was deleted: either book doesn't exist or user doesn't own it
+      
       return res.status(404).send({ error: 'Book not found or unauthorized' });
     }
 
